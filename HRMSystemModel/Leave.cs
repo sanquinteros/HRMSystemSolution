@@ -4,8 +4,8 @@
     {
         public int LeaveID { get; set; }
         public int EmployeeID { get; set; }
-        public long StartDate { get; set; }
-        public long EndDate { get; set; }
+        public DateOnly StartDate { get; set; }
+        public DateOnly EndDate { get; set; }
         public string LeaveType { get; set; }
         public bool IsPaid { get; set; }
         public bool Documented { get; set; }

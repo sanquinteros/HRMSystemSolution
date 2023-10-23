@@ -4,7 +4,7 @@
     {
         public int PaymentID { get; set; }
         public int EmployeeID { get; set; }
-        public long PaymentDate { get; set; }
+        public DateOnly PaymentDate { get; set; }
         public string PaymentType { get; set; }
         public decimal Amount { get; set; }
         public bool IsPix { get; set; }

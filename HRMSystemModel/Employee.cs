@@ -5,7 +5,7 @@
         public int EmployeeID { get; set; }
         public string FullName { get; set; }
         public int PositionID { get; set; }
-        public DateTime JoiningDate { get; set; }
+        public DateOnly JoiningDate { get; set; }
         public decimal Salary { get; set; }
         public bool WorkFromHome { get; set; }
         public bool NightShift { get; set; }
