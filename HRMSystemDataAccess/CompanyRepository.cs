@@ -25,7 +25,7 @@ namespace HRMSystemDataAccess
                 {
                     Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetById()." +
                         $" Search term: CompanyID='{companyID}'. Exception: {ex}.");
-                    throw;
+                    throw new Exception("GetById Exception");
                 }
             }
         }
@@ -47,7 +47,7 @@ namespace HRMSystemDataAccess
                 {
                     Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetByCNPJ()." +
                         $" Search term: CNPJ='{cnpj}'. Exception: {ex}.");
-                    throw;
+                    throw new Exception("GetByCNPJ Exception");
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace HRMSystemDataAccess
                 {
                     Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetByCompanyName()." +
                         $" Search term: CompanyName='{companyName}'. Exception: {ex}.");
-                    throw;
+                    throw new Exception("GetByCompanyName Exception");
                 }
             }
         }
@@ -96,7 +96,7 @@ namespace HRMSystemDataAccess
                 {
                     Debug.WriteLine($"A SqlException occurred at CompanyRepository.Insert()." +
                         $" Insert term: {company}. Exception: {ex}.");
-                    throw;
+                    throw new Exception("Insert Exception");
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace HRMSystemDataAccess
                 {
                     Debug.WriteLine($"A SqlException occurred at CompanyRepository.Update()." +
                         $" Update term: {company}. Exception: {ex}.");
-                    throw;
+                    throw new Exception("Update Exception");
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace HRMSystemDataAccess
                 {
                     Debug.WriteLine($"A SqlException occurred at CompanyRepository.Delete()." +
                         $" Delete term: CompanyID='{companyID}'. Exception: {ex}.");
-                    throw;
+                    throw new Exception("Delete Exception");
                 }
             }
         }
@@ -175,16 +175,16 @@ namespace HRMSystemDataAccess
 
         private static List<Company> ExecuteReaderMultiple(SqlCommand sqlCommand)
         {
-            List<Company> companies = new List<Company>();
+            List<Company> companyList = new List<Company>();
 
             using (SqlDataReader reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    companies.Add(MapCompanyFromDataReader(reader));
+                    companyList.Add(MapCompanyFromDataReader(reader));
                 }
             }
-            return companies;
+            return companyList;
         }
     }
 }

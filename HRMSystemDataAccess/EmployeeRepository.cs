@@ -188,16 +188,16 @@ namespace HRMSystemDataAccess
 
         private static List<Employee> ExecuteReaderMultiple(SqlCommand sqlCommand)
         {
-            List<Employee> companies = new List<Employee>();
+            List<Employee> employeeList = new List<Employee>();
 
             using (SqlDataReader reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    companies.Add(MapEmployeeFromDataReader(reader));
+                    employeeList.Add(MapEmployeeFromDataReader(reader));
                 }
             }
-            return companies;
+            return employeeList;
         }
     }
 }
