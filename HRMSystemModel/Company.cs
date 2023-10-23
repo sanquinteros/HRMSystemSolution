@@ -10,7 +10,7 @@
 
         public override string ToString()
         {
-            return $"Company[CompanyID={CompanyID}, CompanyName={CompanyName}, TradingName={TradingName}, Address={Address}, CNPJ={CNPJ}]";
+            return $"Company[CompanyID='{CompanyID}', CompanyName='{CompanyName}', TradingName='{TradingName}', Address='{Address}', CNPJ='{CNPJ}']";
         }
     }
 }
