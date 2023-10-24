@@ -12,7 +12,7 @@ namespace HRMSystemDataAccess
             using SqlConnection conn = new Connection().GetOpenConnection();
             using (SqlCommand sqlCommand = conn.CreateCommand())
             {
-                sqlCommand.CommandText = "SELECT BonusOrDeductionID, EmployeeID, IsEnabled, CreatedDate, BonusType, Amount " +
+                sqlCommand.CommandText = "SELECT BonusOrDeductionID, EmployeeID, IsEnabled, CreatedDate, _Type, Amount " +
                                         "FROM BonusesOrDeductions WHERE BonusOrDeductionID = @BonusOrDeductionID";
                 sqlCommand.Parameters.Add("@BonusOrDeductionID", SqlDbType.Int).Value = bonusOrDeductionId;
 
@@ -22,8 +22,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.GetByBonusOrDeductionID()." +
-                        $" Search term: BonusOrDeductionID='{bonusOrDeductionId}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.GetByBonusOrDeductionID(). " +
+                        $"Search term: BonusOrDeductionID='{bonusOrDeductionId}'. Exception: {ex}.");
                     throw new Exception("GetByBonusOrDeductionID Exception");
                 }
             }
@@ -34,7 +34,7 @@ namespace HRMSystemDataAccess
             using SqlConnection conn = new Connection().GetOpenConnection();
             using (SqlCommand sqlCommand = conn.CreateCommand())
             {
-                sqlCommand.CommandText = "SELECT BonusOrDeductionID, EmployeeID, IsEnabled, CreatedDate, BonusType, Amount " +
+                sqlCommand.CommandText = "SELECT BonusOrDeductionID, EmployeeID, IsEnabled, CreatedDate, _Type, Amount " +
                                         "FROM BonusesOrDeductions WHERE EmployeeID = @EmployeeID";
                 sqlCommand.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = employeeID;
 
@@ -44,8 +44,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.GetByEmployeeID()." +
-                        $" Search term: EmployeeID='{employeeID}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.GetByEmployeeID(). " +
+                        $"Search term: EmployeeID='{employeeID}'. Exception: {ex}.");
                     throw new Exception("GetByEmployeeID Exception");
                 }
             }
@@ -56,14 +56,14 @@ namespace HRMSystemDataAccess
             using SqlConnection conn = new Connection().GetOpenConnection();
             using (SqlCommand sqlCommand = conn.CreateCommand())
             {
-                sqlCommand.CommandText = "INSERT INTO BonusesOrDeductions (EmployeeID, IsEnabled, CreatedDate, BonusType, Amount) " +
+                sqlCommand.CommandText = "INSERT INTO BonusesOrDeductions (EmployeeID, IsEnabled, CreatedDate, _Type, Amount) " +
                                          "OUTPUT INSERTED.* " +
-                                         "VALUES (@EmployeeID, @IsEnabled, @CreatedDate, @BonusType, @Amount)";
+                                         "VALUES (@EmployeeID, @IsEnabled, @CreatedDate, @Type, @Amount)";
 
                 sqlCommand.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = bonus.EmployeeID;
                 sqlCommand.Parameters.Add("@IsEnabled", SqlDbType.Bit).Value = bonus.IsEnabled;
                 sqlCommand.Parameters.Add("@CreatedDate", SqlDbType.Date).Value = bonus.CreatedDate;
-                sqlCommand.Parameters.Add("@BonusType", SqlDbType.VarChar, 100).Value = bonus.Type;
+                sqlCommand.Parameters.Add("@Type", SqlDbType.VarChar, 100).Value = bonus.Type;
                 sqlCommand.Parameters.Add("@Amount", SqlDbType.Decimal, 10).Value = bonus.Amount;
 
                 try
@@ -72,8 +72,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.Insert()." +
-                        $" Insert term: {bonus}. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.Insert(). " +
+                        $"Insert term: {bonus}. Exception: {ex}.");
                     throw new Exception("Insert Exception");
                 }
             }
@@ -85,14 +85,14 @@ namespace HRMSystemDataAccess
             using (SqlCommand sqlCommand = conn.CreateCommand())
             {
                 sqlCommand.CommandText = "UPDATE BonusesOrDeductions SET EmployeeID = @EmployeeID, IsEnabled = @IsEnabled, " +
-                                         "CreatedDate = @CreatedDate, BonusType = @BonusType, Amount = @Amount " +
+                                         "CreatedDate = @CreatedDate, _Type = @Type, Amount = @Amount " +
                                          "WHERE BonusOrDeductionID = @BonusOrDeductionID";
 
                 sqlCommand.Parameters.Add("@BonusOrDeductionID", SqlDbType.Int).Value = bonus.BonusOrDeductionID;
                 sqlCommand.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = bonus.EmployeeID;
                 sqlCommand.Parameters.Add("@IsEnabled", SqlDbType.Bit).Value = bonus.IsEnabled;
                 sqlCommand.Parameters.Add("@CreatedDate", SqlDbType.Date).Value = bonus.CreatedDate;
-                sqlCommand.Parameters.Add("@BonusType", SqlDbType.VarChar, 100).Value = bonus.Type;
+                sqlCommand.Parameters.Add("@Type", SqlDbType.VarChar, 100).Value = bonus.Type;
                 sqlCommand.Parameters.Add("@Amount", SqlDbType.Decimal, 10).Value = bonus.Amount;
 
                 try
@@ -101,8 +101,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.Update()." +
-                        $" Update term: {bonus}. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.Update(). " +
+                        $"Update term: {bonus}. Exception: {ex}.");
                     throw new Exception("Update Exception");
                 }
             }
@@ -122,8 +122,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.Delete()." +
-                        $" Delete term: BonusOrDeductionID='{bonusOrDeductionId}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BonusAndDeductionRepository.Delete(). " +
+                        $"Delete term: BonusOrDeductionID='{bonusOrDeductionId}'. Exception: {ex}.");
                     throw new Exception("Delete Exception");
                 }
             }
@@ -133,12 +133,12 @@ namespace HRMSystemDataAccess
         {
             return new BonusOrDeduction
             {
-                BonusOrDeductionID = (int)reader["BonusOrDeductionID"],
-                EmployeeID = (int)reader["EmployeeID"],
-                IsEnabled = (bool)reader["IsEnabled"],
-                CreatedDate = (DateOnly)reader["CreatedDate"],
-                Type = (string)reader["BonusType"],
-                Amount = (decimal)reader["Amount"]
+                BonusOrDeductionID = (int)reader[0],
+                EmployeeID = (int)reader[1],
+                IsEnabled = (bool)reader[2],
+                CreatedDate = (DateOnly)reader[3],
+                Type = (string)reader[4],
+                Amount = (decimal)reader[5]
             };
         }
 

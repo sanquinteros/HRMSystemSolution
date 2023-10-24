@@ -14,15 +14,15 @@
 
         public override string ToString()
         {
-            return $"Employee[EmployeeID='{EmployeeID}'," +
-                $" FullName='{FullName}'," +
-                $" Position='{PositionID}'," +
-                $" JoiningDate='{JoiningDate}'," +
-                $" Salary=This string can't be logged as it carries sensitive information, sorry!," +
-                $" WorkFromHome='{WorkFromHome}'," +
-                $" NightShift='{NightShift}'," +
-                $" IsHourly='{IsHourly}'," +
-                $" BankAccountNumber=This string can't be logged as it carries sensitive information, sorry!]";
+            return $"Employee[EmployeeID='{EmployeeID}', " +
+                $"FullName='{FullName}', " +
+                $"Position='{PositionID}', " +
+                $"JoiningDate='{JoiningDate}', " +
+                $"Salary=This string can't be logged as it carries sensitive information, sorry!," +
+                $"WorkFromHome='{WorkFromHome}', " +
+                $"NightShift='{NightShift}', " +
+                $"IsHourly='{IsHourly}', " +
+                $"BankAccountNumber=This string can't be logged as it carries sensitive information, sorry!]";
         }
     }
 }

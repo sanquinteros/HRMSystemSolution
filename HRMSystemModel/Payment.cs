@@ -1,6 +1,6 @@
 ﻿namespace HRMSystemModel
 {
-    public class Payments
+    public class Payment
     {
         public int PaymentID { get; set; }
         public int EmployeeID { get; set; }

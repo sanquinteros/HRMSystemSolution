@@ -22,8 +22,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.GetById()." +
-                        $" Search term: BenefitTypeId='{benefitTypeId}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.GetById(). " +
+                        $"Search term: BenefitTypeId='{benefitTypeId}'. Exception: {ex}.");
                     throw new Exception("GetById Exception");
                 }
             }
@@ -44,8 +44,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.GetByTypeName()." +
-                        $" Search term: TypeName='{typeName}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.GetByTypeName(). " +
+                        $"Search term: TypeName='{typeName}'. Exception: {ex}.");
                     throw new Exception("GetByTypeName Exception");
                 }
             }
@@ -68,8 +68,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.Insert()." +
-                        $" Insert term: {benefitType}. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.Insert(). " +
+                        $"Insert term: {benefitType}. Exception: {ex}.");
                     throw new Exception("Insert Exception");
                 }
             }
@@ -92,8 +92,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.Update()." +
-                        $" Update term: {benefitType}. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.Update(). " +
+                        $"Update term: {benefitType}. Exception: {ex}.");
                     throw new Exception("Update Exception");
                 }
             }
@@ -113,8 +113,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.Delete()." +
-                        $" Delete term: BenefitTypeId='{benefitTypeId}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at BenefitTypeRepository.Delete(). " +
+                        $"Delete term: BenefitTypeId='{benefitTypeId}'. Exception: {ex}.");
                     throw new Exception("Delete Exception");
                 }
             }
@@ -124,8 +124,8 @@ namespace HRMSystemDataAccess
         {
             return new BenefitType
             {
-                BenefitTypeId = (int)reader["BenefitTypeId"],
-                TypeName = (string)reader["TypeName"]
+                BenefitTypeId = (int)reader[0],
+                TypeName = (string)reader[1]
             };
         }
 

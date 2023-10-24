@@ -22,8 +22,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.GetById()." +
-                        $" Search term: Employee.Id='{employeeID}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.GetById(). " +
+                        $"Search term: Employee.Id='{employeeID}'. Exception: {ex}.");
                     throw new Exception("GetById Exception");
                 }
             }
@@ -44,8 +44,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.GetByFullName()." +
-                        $" Search term: Employee.FullName='{fullName}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.GetByFullName(). " +
+                        $"Search term: Employee.FullName='{fullName}'. Exception: {ex}.");
                     throw new Exception("GetByFullName Exception");
                 }
             }
@@ -66,8 +66,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.GetByBankAccountNumber()." +
-                        $" Search term: Employee.BankAccountNumber='{bankAccountNumber}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.GetByBankAccountNumber(). " +
+                        $"Search term: Employee.BankAccountNumber='{bankAccountNumber}'. Exception: {ex}.");
                     throw new Exception("GetByBankAccountNumber Exception");
                 }
             }
@@ -97,8 +97,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.Insert()." +
-                        $" Insert term: {employee}. Exception: {ex}."); 
+                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.Insert(). " +
+                        $"Insert term: {employee}. Exception: {ex}."); 
                     throw new Exception("Insert Exception");
                 }
             }
@@ -130,8 +130,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.Update()." +
-                        $" Update term: {employee}. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.Update(). " +
+                        $"Update term: {employee}. Exception: {ex}.");
                     throw new Exception("Update Exception");
                 }
             }
@@ -151,8 +151,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.Delete()." +
-                        $" Delete term: Employee.ID='{employeeID}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occoured at EmployeeRepository.Delete(). " +
+                        $"Delete term: Employee.ID='{employeeID}'. Exception: {ex}.");
                     throw new Exception("Delete Exception");
                 }
             }
@@ -162,15 +162,15 @@ namespace HRMSystemDataAccess
         {
             return new Employee
             {
-                EmployeeID = (int)reader["EmployeeID"],
-                FullName = (string)reader["FullName"],
-                PositionID = (int)reader["PositionId"],
-                JoiningDate = (DateTime)reader["JoiningDate"],
-                Salary = (decimal)reader["Salary"],
-                WorkFromHome = (bool)reader["WorkFromHome"],
-                NightShift = (bool)reader["NightShift"],
-                IsHourly = (bool)reader["IsHourly"],
-                BankAccountNumber = (string)reader["BankAccountNumber"]
+                EmployeeID = (int)reader[0],
+                FullName = (string)reader[1],
+                PositionID = (int)reader[2],
+                JoiningDate = (DateOnly)reader[3],
+                Salary = (decimal)reader[4],
+                WorkFromHome = (bool)reader[5],
+                NightShift = (bool)reader[6],
+                IsHourly = (bool)reader[7],
+                BankAccountNumber = (string)reader[8]
             };
         }
 

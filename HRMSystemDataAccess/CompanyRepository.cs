@@ -23,8 +23,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetById()." +
-                        $" Search term: CompanyID='{companyID}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetById(). " +
+                        $"Search term: CompanyID='{companyID}'. Exception: {ex}.");
                     throw new Exception("GetById Exception");
                 }
             }
@@ -45,8 +45,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetByCNPJ()." +
-                        $" Search term: CNPJ='{cnpj}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetByCNPJ(). " +
+                        $"Search term: CNPJ='{cnpj}'. Exception: {ex}.");
                     throw new Exception("GetByCNPJ Exception");
                 }
             }
@@ -67,8 +67,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetByCompanyName()." +
-                        $" Search term: CompanyName='{companyName}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.GetByCompanyName(). " +
+                        $"Search term: CompanyName='{companyName}'. Exception: {ex}.");
                     throw new Exception("GetByCompanyName Exception");
                 }
             }
@@ -94,8 +94,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.Insert()." +
-                        $" Insert term: {company}. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.Insert(). " +
+                        $"Insert term: {company}. Exception: {ex}.");
                     throw new Exception("Insert Exception");
                 }
             }
@@ -121,8 +121,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.Update()." +
-                        $" Update term: {company}. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.Update(). " +
+                        $"Update term: {company}. Exception: {ex}.");
                     throw new Exception("Update Exception");
                 }
             }
@@ -142,8 +142,8 @@ namespace HRMSystemDataAccess
                 }
                 catch (SqlException ex)
                 {
-                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.Delete()." +
-                        $" Delete term: CompanyID='{companyID}'. Exception: {ex}.");
+                    Debug.WriteLine($"A SqlException occurred at CompanyRepository.Delete(). " +
+                        $"Delete term: CompanyID='{companyID}'. Exception: {ex}.");
                     throw new Exception("Delete Exception");
                 }
             }
@@ -153,11 +153,11 @@ namespace HRMSystemDataAccess
         {
             return new Company
             {
-                CompanyID = (int)reader["CompanyID"],
-                CompanyName = (string)reader["CompanyName"],
-                TradingName = (string)reader["TradingName"],
-                Address = (string)reader["_Address"],
-                CNPJ = (string)reader["CNPJ"]
+                CompanyID = (int)reader[0],
+                CompanyName = (string)reader[1],
+                TradingName = (string)reader[2],
+                Address = (string)reader[3],
+                CNPJ = (string)reader[4]
             };
         }
 
